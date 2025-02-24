@@ -1,0 +1,36 @@
+body {
+    background-color: #4e4f50;
+    font-family: 'Lato', sans-serif;
+}
+
+.container {
+    max-width: 700px;
+    margin-top: 30px;
+    background: #e2e2e2;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
+    padding: 20px;
+}
+
+.accordion-button {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.accordion-body {
+    background-color: #fdfdfd;
+    border-radius: 5px;
+    padding: 20px;
+}
+
+.card {
+    background-color: #e3f2fd;
+    padding: 15px;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.btn {
+    font-size: 1.1rem;
+    font-weight: bold;
+}
