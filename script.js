@@ -48,21 +48,33 @@ function calculateSuperpositionThree() {
 function generateKarnaugh() {
     const input = document.getElementById('truthTable').value;
     const values = input.split(',').map(v => v.trim());
-    if (values.length !== 8 && values.length !== 16) {
-        document.getElementById('karnaughResult').innerHTML = '<div class="alert alert-danger">Errore: Inserire 8 o 16 valori.</div>';
+    
+    if (values.length !== 16) {
+        document.getElementById('karnaughResult').innerHTML = '<div class="alert alert-danger">Errore: Inserire esattamente 16 valori.</div>';
         return;
     }
     
-    let size = values.length === 8 ? 2 : 4;
-    let table = '<table class="table table-bordered text-center">';
+    // Indici per le righe e colonne in Gray Code per 4 variabili
+    const gray = ["00", "01", "11", "10"];
+    
+    let table = '<table class="table table-bordered text-center" style="width: 200px; table-layout: fixed; font-size: 24px;">';
+    table += '<tr><th style="width: 80px; height: 80px;"></th>'; // Angolo vuoto
+    for (let col of gray) {
+        table += `<th style="width: 80px; height: 80px;">${col}</th>`;
+    }
+    table += '</tr>';
+    
     let count = 0;
-    for (let i = 0; i < size; i++) {
-        table += '<tr>';
-        for (let j = 0; j < size; j++) {
-            table += `<td class="p-3 bg-light">${values[count++]}</td>`;
+    for (let row of gray) {
+        table += `<tr><th style="width: 80px; height: 80px;">${row}</th>`;
+        for (let col of gray) {
+            let val = values[count++];
+            let color = val === "1" ? 'bg-success text-white' : 'bg-light';
+            table += `<td class="${color}" style="width: 80px; height: 80px; font-size: 24px;">${val}</td>`;
         }
         table += '</tr>';
     }
     table += '</table>';
+    
     document.getElementById('karnaughResult').innerHTML = table;
 }
